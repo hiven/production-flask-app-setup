@@ -1,16 +1,11 @@
 import os
 from flask import Flask, render_template
-from config import Config  # NEW!!!!!
+from config import Config
 
-
-### Application Factory ###
 def create_app():
 
     app = Flask(__name__)
-
-    # Configure the flask app instance
-    CONFIG_TYPE = os.getenv('CONFIG_TYPE', default='config.DevelopmentConfig')
-    app.config.from_object(CONFIG_TYPE)
+    app.config.from_object(config.DevelopmentConfig)
 
     from app.main import main_blueprint
 
